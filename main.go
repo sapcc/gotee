@@ -43,11 +43,15 @@ func main() {
 			if err != nil {
 				log.Error(err)
 				continue
+			} else {
+				log.Info("successfully dialed to ", *outAddr1)
 			}
 			// second out connection is optional
 			c2, err := net.Dial("tcp", *outAddr2)
 			if err != nil {
 				log.Warn(err)
+			} else {
+				log.Info("successfully dialed to ", *outAddr2)
 			}
 			if c2 == nil {
 				go handleConnection(conn, c1)
